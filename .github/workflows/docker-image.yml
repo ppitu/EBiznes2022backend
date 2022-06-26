@@ -1,11 +1,12 @@
 name: Docker Image CI
 
-on: [push]
+on:
+  push:
+    branches: [ main ]
 
 jobs:
 
   build:
-    environment: CI
     runs-on: ubuntu-latest
 
     steps:
@@ -13,14 +14,13 @@ jobs:
     
     - name: Copy repository contents via scp
       uses: appleboy/scp-action@master
-      env:
+      with:
         HOST: 54.38.54.4
         USERNAME: ubuntu
         PORT: 22
         KEY: ${{ secrets.SSHKEY }}
-      with:
         source: "."
-        target: "/var/www/mywebsite"
+        target: "~/backend"
     
     - name: Build the Docker image
       uses: appleboy/ssh-action@master
