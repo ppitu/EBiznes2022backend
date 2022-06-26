@@ -34,6 +34,7 @@ jobs:
       with:
         script: |
           cd backend
+          docker rm -f myapp
           docker build -t myapp .
           docker run -d --name myapp -p 1323:1323 --rm myapp
           ls
