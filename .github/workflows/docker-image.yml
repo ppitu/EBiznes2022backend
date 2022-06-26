@@ -21,7 +21,7 @@ jobs:
         HOST: 54.38.54.4
         USERNAME: ubuntu
         PORT: 22
-        KEY: ${{ jobs.vps.environment.SSHKEY }}
+        KEY: ${{ secrets.SSHKEY }}
       with:
         source: "."
         target: "/var/www/mywebsite"
