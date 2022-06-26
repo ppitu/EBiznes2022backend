@@ -26,4 +26,4 @@ USER ppitu
 
 WORKDIR /home/ppitu/Project
 
-RUN go run server.go
+CMD go run server.go
