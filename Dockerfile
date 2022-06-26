@@ -24,6 +24,6 @@ COPY ./ /home/ppitu/Project
 
 USER ppitu
 
-RUN go run server.go
-
 WORKDIR /home/ppitu/Project
+
+RUN go run server.go
