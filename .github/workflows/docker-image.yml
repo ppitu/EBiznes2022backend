@@ -7,7 +7,6 @@ on:
 jobs:
 
   build:
-    environment: vps
     runs-on: ubuntu-latest
 
     steps:
@@ -15,11 +14,12 @@ jobs:
     
     - name: Copy repository contents via scp
       uses: appleboy/scp-action@master
-      with:
+      env:
         HOST: 54.38.54.4
         USERNAME: ubuntu
         PORT: 22
         KEY: ${{ secrets.SSHKEY }}
+      with:
         source: "."
         target: "~/backend"
     
@@ -30,4 +30,7 @@ jobs:
         USERNAME: ubuntu
         PORT: 22
         KEY: ${{ secrets.SSHKEY }}
-        script: sudo docker build .
+        script: |
+          docker build -t myapp .
+          docker run --name myapp -p 1323:1323 --rm -i -t myapp
+          go run server.go
