@@ -32,4 +32,4 @@ jobs:
         PORT: 22
         KEY: ${{ secrets.SSHKEY }}
         script: |
-          docker build -t myapp .
+          ls
