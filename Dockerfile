@@ -22,8 +22,6 @@ RUN adduser ppitu sudo
 
 COPY ./ /home/ppitu/Project
 
-USER ppitu
-
 WORKDIR /home/ppitu/Project
 
 CMD go run server.go
