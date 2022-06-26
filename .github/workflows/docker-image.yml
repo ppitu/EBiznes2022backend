@@ -26,11 +26,10 @@ jobs:
     
     - name: Build the Docker image
       uses: appleboy/ssh-action@master
-      env:
+      with:
         host: 54.38.54.4
         USERNAME: ubuntu
         PORT: 22
         KEY: ${{ secrets.SSHKEY }}
-      with:
         script: |
           ls
