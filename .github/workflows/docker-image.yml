@@ -33,4 +33,7 @@ jobs:
         KEY: ${{ secrets.SSHKEY }}
       with:
         script: |
+          docker build -t myapp .
+          docker run --name myapp -p 1323:1323 --rm -i -t myapp
           ls
+          go run server.go
