@@ -155,7 +155,7 @@ const oauthGoogleUrlAPI = "https://www.googleapis.com/oauth2/v2/userinfo?access_
 
 func OauthGoogleLogin(c echo.Context) error {
 	googleOauthConfig = &oauth2.Config{
-		RedirectURL:  "http://localhost:1323/users/auth/google/callback",
+		RedirectURL:  "http://54.38.54.4:1323/users/auth/google/callback",
 		ClientID:     goDotEnvVariable("GOOGLECLIENTID"),
 		ClientSecret: goDotEnvVariable("GOOGLECLIENTSECRET"),
 		Scopes:       []string{"https://www.googleapis.com/auth/userinfo.email"},
@@ -168,7 +168,7 @@ func OauthGoogleLogin(c echo.Context) error {
 
 func OAuthGithubLogin(c echo.Context) error {
 	githubOauthConfig = &oauth2.Config{
-		RedirectURL:  "http://localhost:1323/users/auth/github/callback",
+		RedirectURL:  "http://54.38.54.4:1323/users/auth/github/callback",
 		ClientID:     goDotEnvVariable("GITHUBCLIENTID"),
 		ClientSecret: goDotEnvVariable("GITHUBCLIENTSECRET"),
 		Scopes:       []string{"https://github.com/login/oauth/access_token"},
@@ -186,7 +186,7 @@ func OauthGoogleCallback(c echo.Context) error {
 
 	if err != nil {
 		fmt.Println(err.Error())
-		return c.Redirect(http.StatusTemporaryRedirect, "http://localhost:3000/")
+		return c.Redirect(http.StatusTemporaryRedirect, "http://54.38.54.4:3000/")
 	}
 
 	userinfo := new(models.User)
@@ -205,7 +205,7 @@ func OauthGoogleCallback(c echo.Context) error {
 	cookieUser.Secure = true
 	c.SetCookie(cookieUser)
 
-	return c.Redirect(http.StatusSeeOther, "http://localhost:3000/success")
+	return c.Redirect(http.StatusSeeOther, "http://54.38.54.4:3000/success")
 }
 
 func OauthGithubCallback(c echo.Context) error {
@@ -214,7 +214,7 @@ func OauthGithubCallback(c echo.Context) error {
 
 	if err != nil {
 		fmt.Println(err.Error())
-		return c.Redirect(http.StatusTemporaryRedirect, "http://localhost:3000/")
+		return c.Redirect(http.StatusTemporaryRedirect, "http://54.38.54.4:3000/")
 	}
 
 	userinfo := new(models.User)
@@ -233,7 +233,7 @@ func OauthGithubCallback(c echo.Context) error {
 	cookieUser.Secure = true
 	c.SetCookie(cookieUser)
 
-	return c.Redirect(http.StatusSeeOther, "http://localhost:3000/success")
+	return c.Redirect(http.StatusSeeOther, "http://54.38.54.4:3000/success")
 }
 
 func getUserInfoGoogle(state string, code string) ([]byte, error) {
