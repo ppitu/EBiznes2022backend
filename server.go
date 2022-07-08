@@ -41,10 +41,10 @@ func main() {
 
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
-	//e.Use(middleware.CORS())
-	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-		AllowOrigins: []string{"http://54.38.54.4", "http//54.38.54.4"},
-		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
+	e.Use(middleware.CORS())
+	//e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+	//	AllowOrigins: []string{"http://54.38.54.4", "http//54.38.54.4"},
+	//	AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
 	}))
 
 	routes.Routes(e.Group(""))
